@@ -3,12 +3,13 @@ const signupForm = document.getElementById('signupForm');
 if (signupForm) {
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        // e.stopImmediatePropagation();
 
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value();
-        const confirmPassword = document.getElementById('confirmPassword').value();
+        
+        // CORRECTION: .value() se brackets () hata diye hain
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
 
         // 1. Validation
         if (password !== confirmPassword) {
@@ -27,10 +28,8 @@ if (signupForm) {
         localStorage.setItem('userAccount', JSON.stringify(userData));
         sessionStorage.setItem('activeUser', JSON.stringify(userData));
 
-        // 4. Alert and Redirect
+        // 4. Alert (Redirection line hata di hai taake form gayab na ho)
         
-        
-       
     });
 }
 
@@ -42,7 +41,7 @@ if (loginForm) {
         e.preventDefault();
 
         const email = document.getElementById('loginEmail').value.trim();
-        const password = document.getElementById('loginPassword').value;
+        const password = document.getElementById('loginPassword').value.trim();
 
         // Retrieve Data from LocalStorage
         const savedData = JSON.parse(localStorage.getItem('userAccount'));
@@ -55,14 +54,9 @@ if (loginForm) {
 
         // Check Email and Password
         if (savedData.email === email && savedData.password === password) {
-
             alert("Welcome back!");
-
             localStorage.setItem('lastLogin', new Date().toLocaleString());
             sessionStorage.setItem('isLoggedIn', 'true');
-
-            
-
         } else {
             alert("Invalid email or password");
         }
@@ -70,7 +64,6 @@ if (loginForm) {
 }
 
 function togglePassword(inputId, btn) {
-
     let input = document.getElementById(inputId);
     let icon = btn.querySelector("i");
 
