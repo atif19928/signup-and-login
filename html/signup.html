@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/signup.css" />
+   
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body >
+    <script
+      src="https://code.jquery.com/jquery-4.0.0.js"
+      integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+      crossorigin="anonymous"
+    ></script>
+
+   
+
+    <div
+      class="card container d-flex justify-content-center align-items-center vh-100"
+    >
+      <div
+        class="card p-4 shadow-lg border-0 rounded-4 w-100"
+        id="cards"
+        style="max-width: 400px"
+      >
+        <h3 class="text-center fw-bold mb-4">Create Account</h3>
+        <form id="signupForm">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control rounded-3"
+              placeholder="Enter name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control rounded-3"
+              placeholder="Enter email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <div class="input-group">
+              <input
+                type="password"
+                id="password"
+                class="form-control rounded-start-3"
+                placeholder="Create password"
+                required
+              />
+              <button
+                type="button"
+                id="btn"
+                class="btn btn-outline-secondary"
+                onclick="togglePassword('password', this)"
+              >
+                <i class="bi bi-eye-slash" id="toggelpassword"></i>
+              </button>
+            </div>
+          </div>
+          <div class="mb-4">
+    <label class="form-label">Confirm Password</label>
+    <div class="input-group">
+        <input type="password" id="confirmPassword" class="form-control rounded-start-3"
+            placeholder="confirm password" required>
+        <button type="button" id="btn" class="btn btn-outline-secondary" onclick="togglePassword('confirmPassword', this)">
+            <i class="bi bi-eye-slash"></i>
+        </button>
+    </div>
+</div>
+          <button type="submit" id="btn" class="btn w-100 rounded-pill py-2 shadow-sm">
+           <span> Sign Up</span>
+          </button>
+        </form>
+        <p class="text-center mt-3 text-muted">
+          Already have an account?
+          <a href="index.html" class="text-decoration-none">Login</a>
+        </p>
+      </div>
+    </div>
+
+       
+
+
+
+
+    <script>
+    $(document).ready(function(){
+        $("#signupForm").submit(function(e){
+            e.preventDefault();
+
+            var name=$("#name").val();
+            var email =$("#email").val();
+            var password =$("#password").val();
+            var cpassword =$("#confirmPassword").val();
+
+            var errors="";
+            var namepattern = /^[a-zA-Z\s]{5,}$/
+            var emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            var passpattern = /^(?=.*[a-zA-Z\s])(?=.*\d)[a-zA-Z\d\s]{6,}$/
+             
+            if(!namepattern.test(name)){
+                alert("name must be 5 character")
+            } else if(!emailpattern.test(email)){
+                alert("invalid email")
+            }
+            else if(!passpattern.test(password)){
+                alert("passoword must be atleas 6 chracter  with oneletter and one number")
+            }
+
+            if(name == "" || email == "" || password == "" || cpassword == ""){
+                alert("please fill all fields")
+            }
+            if(name.length < 5){
+            errors+="name must be greater than 5 characters"
+            }
+            if(!email.includes('@gmail.com')){
+            errors+="Enter Valid email contain @\n"
+           
+            }
+            if(password.length<6){
+                errors+="week password\n"
+               
+            }
+            if(password !== cpassword){
+    errors += "Passwords do not match\n";
+}
+            if(errors!==""){
+                alert(errors)
+                return
+            }
+            alert("succesfully singup")
+
+             window.location.href = 'index.html';
+        })
+    })
+    </script>
+    <script src="../js/signup.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+  </body>
+</html>

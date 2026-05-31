@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css styling/signup.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="../css styling/navbar.css">
+        <link rel="stylesheet" href="../css/signup.css">
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+    --primary-color: #2C5F6D;
+    --secondary-color: #D4AF37;
+    --bg-light: #FFFFFF;
+    --bg-soft: #FBFBFB;
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    --transition: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-soft);
+}
+
+.top-nav {
+    background-color: var(--primary-color);
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    max-width: 100%;
+}
+
+/* LOGO SIZE FIX - Isko dhayan se dekhein */
+.main-logo {
+    height: 100px;       
+    width: 300px;        
+    object-fit: contain; 
+    display: block;
+    margin-top: 20px;
+}
+
+/* SEARCH BAR STYLING */
+.search-container {
+    display: flex;
+    background: white;
+    /* border-radius: 20px; */
+    overflow: hidden;
+    padding: 6px;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+.search-container input {
+    /* border-radius: 20px; */
+    padding: 8px 15px;
+    outline: none;
+    width: 250px;
+}
+.ban_img{
+    width: 100%;
+}
+.search-container button {
+    background: var(--secondary-color);
+    /* border-radius: 20px; */
+    padding: 8px 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.account-links ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+
+.account-links a {
+    text-decoration: none;
+    color: var(--text-light); 
+    font-weight: 500;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.account-links a:hover {
+    color: var(--secondary-color); 
+}
+
+
+.signup-btn {
+    background-color: var(--secondary-color) !important;
+    color: var(--text-dark) !important; 
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+.form {
+    padding-right: 20px;
+    margin-right: 0;
+    width: 50%; 
+}
+.signup-btn {
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 6px 15px;
+    border-radius: 5px;
+}
+/* --- SECOND NAVBAR FIX --- */
+#second-nav {
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 5%;
+    justify-content: center;
+    border-bottom:1px solid #ddd;
+    background-color: var(--secondary-color);
+
+}
+#second-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+}
+#second-nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+ .items:hover{
+    background-color: var(--primary-color);
+    color: var(--bg-light)!important;
+    border-radius: 20px;
+    cursor: pointer;
+ }
+/* 1. Navbar ki qaid se dropdown ko azad karein */
+#second-nav {
+    overflow: visible !important; 
+    position: relative;
+    z-index: 1000; /* Taake ye baki content ke upar rahe */
+}
+
+#second-nav .container-fluid, 
+#second-nav .collapse, 
+#second-nav .navbar-nav {
+    overflow: visible !important;
+}
+
+/* 2. Dropdown menu ko hawa mein (absolute) set karein */
+.dropdown-menu {
+    position: absolute !important;
+    top: 100%; /* Navbar ke bilkul niche */
+    left: 0;
+    z-index: 9999 !important;
+    margin-top: 0; 
+    display: none;
+}
+.down:hover{
+    background-color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 20px;
+}
+/* Pehle menu ko chhupao */
+.dropdown-menu {
+    display: none !important;
+}
+
+/* Jab click ho aur 'show' class aaye, tab dikhao */
+.dropdown-menu.show {
+    display: block !important;
+    background-color: var(--primary-color);
+    color: var(--primary-color);
+}
+.dropdown-menu.show:hover{
+    color: var(--text-dark);
+    background-color: var(--secondary-color);
+}
+.btn{
+    background-color: var(--primary-color);
+    color: var(--bg-light);
+}
+.btn:hover{
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+}
+    </style>
+</head>
+
+
+ 
+
+<body class="bg-light">
+ <script
+      src="https://code.jquery.com/jquery-4.0.0.js"
+      integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+      crossorigin="anonymous"
+    ></script>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 shadow-lg border-0 rounded-4 w-100"  id="cards"style="max-width: 400px;">
+            <h3 class="text-center fw-bold mb-4">Login</h3>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-control rounded-3" placeholder="Enter email"
+                        required>
+                </div>
+               <div class="mb-3">
+            <label class="form-label">Password</label>
+            <div class="input-group">
+              <input
+                type="password"
+                id="loginPassword"
+                class="form-control rounded-start-3"
+                placeholder="Create password"
+                required
+              />
+              <button
+                type="button"
+                id="btn"
+                class="btn btn-outline-secondary"
+                onclick="togglePassword('loginPassword', this)""
+              >
+                <i class="bi bi-eye-slash" id="toggelpassword"></i>
+              </button>
+            </div>
+          </div>
+                <button type="submit"  id="btn"class="btn  w-100 rounded-pill py-2 shadow-sm" >Login</button>
+            </form>
+            <p class="text-center mt-3 text-muted">Don't have an account? <a href="signup.html"
+                    class="text-decoration-none" style=" color: var(--bg-dark);">Sign Up</a></p>
+        </div>
+    </div>
+
+   
+     
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+
+<script src="../js/signup.js"></script>
+</body>
+
+</html>
